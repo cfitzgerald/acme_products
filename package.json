@@ -1,0 +1,22 @@
+{
+  "name": "acme_products",
+  "version": "1.0.0",
+  "description": "An express application!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cfitzgerald/acme_products.git"
+  },
+  "author": "Colin FitzGerald",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cfitzgerald/acme_products/issues"
+  },
+  "homepage": "https://github.com/cfitzgerald/acme_products#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}

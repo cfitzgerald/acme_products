@@ -17,17 +17,8 @@ html(lang="en")
 
   body
     div.container
-      h1=title
-      div.well
-        span Welcome to Acme Products! Our top-rated product:
-        |
-        |
-        a(href='/products/' + topRated.id) #{topRated.name}
-        br
-        div
-          a(href='/products') Check out all of our #{count} Products!
-
-      block content
+      a(href='/') Home
+      div.alert.alert-danger #{error}
 
   div#footer
     div.container

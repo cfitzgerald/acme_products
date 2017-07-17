@@ -17,17 +17,21 @@ html(lang="en")
 
   body
     div.container
+      a(href='/') Home
       h1=title
-      div.well
-        span Welcome to Acme Products! Our top-rated product:
-        |
-        |
-        a(href='/products/' + topRated.id) #{topRated.name}
-        br
-        div
-          a(href='/products') Check out all of our #{count} Products!
+      form(method='POST' action='/products')
+        div.form-group
+          input(name='name' placeholder='name' class='form-control')
+        div.form-group
+          input(name='rating' class='form-control' placeholder='rate this product (0 - 100)')
+        div.form-group
+          button.btn.btn-primary Save
 
-      block content
+      ul.list-group
+        each product in products
+          li.list-group-item
+            a(href='products/' + product.id) #{product.name}
+            span.badge #{product.rating}
 
   div#footer
     div.container

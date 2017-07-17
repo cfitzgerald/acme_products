@@ -17,17 +17,12 @@ html(lang="en")
 
   body
     div.container
-      h1=title
+      a(href='/products') All Products
+      h1 #{product.name}
       div.well
-        span Welcome to Acme Products! Our top-rated product:
-        |
-        |
-        a(href='/products/' + topRated.id) #{topRated.name}
-        br
-        div
-          a(href='/products') Check out all of our #{count} Products!
-
-      block content
+        h3 Rating: #{product.rating}
+        form(method='POST' action='/products/' + product.id + '?_method=DELETE')
+          button.btn.btn-danger Delete
 
   div#footer
     div.container

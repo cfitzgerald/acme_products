@@ -4,12 +4,15 @@ block content
   div.container
     h1=title
     div.well
-      span Welcome to Acme Products! Our top-rated product:
+      h2 Welcome to Acme Products!
       |
-      |
-      a(href='/products/' + topRated.id) #{topRated.name}
-      br
-      div
+      h4 Our top-rated product:
+        |
+        |
+        a(href='/products/' + topRated.id) #{topRated.name}
+      h4 What else?
+        |
+        |
         a(href='/products') Check out all #{count} Products!
 
     block content

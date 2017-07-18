@@ -1,38 +1,39 @@
-html(lang="en")
-  head
-    meta(charset="utf-8")
-    meta(http-equiv="X-UA-Compatible" content="IE=edge")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    meta(name="description" content="Acme Products - Express Demo")
-    meta(name="author" content="Colin FitzGerald")
-    title=tab
+extends layout
 
-    <!-- Bootstrap core CSS -->
-    // link(href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet")
-    link(href="/vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet")
-    <!-- Custom styles for this template -->
-    link(href="/stylesheets/style.css" rel="stylesheet")
-    <!-- Google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Bellefair|Lato|Lora|Oswald|Raleway|Ubuntu" rel="stylesheet">
+block content
+  div.container
+    a(href='/') << Home
+    h1=title
+    form(method='POST' action='/products')
+      div.form-group
+        input(name='name' placeholder='product name...' class='form-control')
+      div.form-group
+        input(name='rating' class='form-control' placeholder='rate this product (0 - 100)...')
+      div.form-group
+        button.btn.btn-primary Save
 
-  body
-    div.container
-      a(href='/') Home
-      h1=title
-      form(method='POST' action='/products')
-        div.form-group
-          input(name='name' placeholder='name' class='form-control')
-        div.form-group
-          input(name='rating' class='form-control' placeholder='rate this product (0 - 100)')
-        div.form-group
-          button.btn.btn-primary Save
+    ul.list-group
+      each product in products
+        li.list-group-item
+          a(href='products/' + product.id) #{product.name}
+          if product.rating < 50
+            span.badge.badge-low #{product.rating}
+          else if product.rating >= 50 && product.rating < 80
+            span.badge.badge-med #{product.rating}
+          else
+            span.badge.badge-hi #{product.rating}
+          if product === topRated
+            span.badge.badge Top Rated!
 
-      ul.list-group
-        each product in products
-          li.list-group-item
-            a(href='products/' + product.id) #{product.name}
-            span.badge #{product.rating}
 
-  div#footer
-    div.container
-      p.text-muted 👍
+    div
+      span Rating Key:
+      |
+      |
+      span.badge.badge-low Low
+      |
+      |
+      span.badge.badge-med Medium
+      |
+      |
+      span.badge.badge-hi High

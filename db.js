@@ -47,6 +47,9 @@ module.exports = {
     } else if (!product.rating) {
       throw new Error('Product rating is required!');
     }
+    if (isNaN(product.rating)) { // returns true if rating input does NOT contain a valid number
+      throw new Error('Product rating must be a NUMBER between 0 and 100!');
+    }
     if (product.rating > 100 || product.rating < 0) {
       throw new Error('Product rating must be between 0 and 100!');
     }
